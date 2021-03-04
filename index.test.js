@@ -20,4 +20,11 @@ describe("index", ()=> {
         process.env.dinkle = "kek"
         expect(()=> index.loadJSONToEnv({dinkle: "kek"}, false)).to.throw("cannot overwrite")
     })
+
+    it("should load an encrypted json file to env", ()=> {
+        const key = "biglongasskey§"
+        expect(process.env[key]).equal(undefined)
+        index.loadJSON("./test_files/loadJSON.json.enc", "mypassword", true)
+        expect(process.env[key]).equal("value1")
+    })
 })

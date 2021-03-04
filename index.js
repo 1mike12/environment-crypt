@@ -12,10 +12,6 @@ module.exports = {
         let decrypted = crypto.decode(encrypted, password)
         return decrypted
     },
-    getVariablesAsJSON(envFilePath, password){
-        let decoded = this.decodeSync(envFilePath, password)
-        return JSON.parse(decoded)
-    },
     loadJSONToEnv(json, allowOverwrite = true){
         const existingEnvironmentKeys = new Set(Object.keys(process.env))
 
@@ -29,5 +25,14 @@ module.exports = {
             }
             process.env[key] = value
         }
+    },
+    getJSON(envFilePath, password){
+        let decoded = this.decodeSync(envFilePath, password)
+        let json = JSON.parse(decoded)
+        return json
+    },
+    loadJSON(envFilePath, password, overWrite = true){
+        let json = this.getJSON(envFilePath, password)
+        this.loadJSONToEnv(json, overWrite)
     }
 }
