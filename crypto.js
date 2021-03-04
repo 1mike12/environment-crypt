@@ -1,5 +1,5 @@
 const crypto = require('crypto')
-
+const OUTPUT_ENCODING = "binary"
 module.exports = {
     /**
      * @param raw
@@ -8,13 +8,13 @@ module.exports = {
      */
     encode(raw, password){
         const cipher = crypto.createCipher('aes-256-cbc', this.hashPass(password))
-        let encryptedData = cipher.update(raw, 'utf8', 'hex')
-        encryptedData += cipher.final('hex')
+        let encryptedData = cipher.update(raw, 'utf8', OUTPUT_ENCODING)
+        encryptedData += cipher.final(OUTPUT_ENCODING)
         return encryptedData
     },
     decode(encrypted, password){
         const decipher = crypto.createDecipher('aes-256-cbc', this.hashPass(password))
-        let decryptedData = decipher.update(encrypted, 'hex', 'utf8')
+        let decryptedData = decipher.update(encrypted, OUTPUT_ENCODING, 'utf8')
         decryptedData += decipher.final('utf8')
         return decryptedData
     },
