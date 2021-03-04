@@ -1,0 +1,21 @@
+{
+  "name": "secure_env_json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.3",
+    "mocha": "^8.3.0"
+  },
+  "dependencies": {
+    "minimist": "^1.2.5"
+  },
+  "bin": {
+    "secure_env_json": "cli.js"
+  }
+}
