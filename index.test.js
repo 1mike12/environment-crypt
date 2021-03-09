@@ -22,7 +22,7 @@ describe("index", ()=> {
     })
 
     it("should load an encrypted json file to env", ()=> {
-        const key = "biglongasskey§"
+        const key = "key1"
         expect(process.env[key]).equal(undefined)
         index.loadJSON("./test_files/loadJSON.json.enc", "mypassword", true)
         expect(process.env[key]).equal("value1")

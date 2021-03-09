@@ -20,6 +20,7 @@ describe("crypto", ()=>{
 
     it("should decode wrong", ()=> {
         const encrypted = crypto.encode("uh oh stinky", "pass")
-        expect(()=> crypto.decode(encrypted, "wrong pass")).to.throw("bad decrypt")
+        let decrypted = crypto.decode(encrypted, "wrong pass")
+        expect(decrypted).to.not.equal("uh oh stinky")
     })
 })
