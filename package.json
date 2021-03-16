@@ -1,6 +1,6 @@
 {
   "name": "environment-crypt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "encrypt environment variables so that they can be checked into version control",
   "main": "index.js",
   "scripts": {
@@ -17,5 +17,10 @@
   },
   "bin": {
     "secure_env_json": "cli.js"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1mike12/environment-crypt.git"
+  },
+  "homepage": "https://github.com/1mike12/environment-crypt"
 }
