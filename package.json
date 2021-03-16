@@ -1,12 +1,12 @@
 {
-  "name": "secure_env_json",
+  "name": "environment-crypt",
   "version": "1.0.0",
-  "description": "",
+  "description": "encrypt environment variables so that they can be checked into version control",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Michael Qin",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.3.3",

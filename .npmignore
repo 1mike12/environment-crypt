@@ -1,0 +1,5 @@
+test_files/
+tmp/
+.mocharc.js
+**/*.test.js
+mocha_globals.js

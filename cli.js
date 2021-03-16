@@ -25,8 +25,8 @@ if (!decrypt){
         } else {
             raw = raw + ".dec"
         }
-        const decoded = index.decodeSync(encrypted, password)
-        fs.writeFileSync(raw, decoded, "utf-8")
-        return console.warn(`REMEMBER TO NOT CHECK IN DECRYPTED FILE ${raw}`)
     }
+    const decoded = index.decodeSync(encrypted, password)
+    fs.writeFileSync(raw, decoded, "utf-8")
+    return console.warn(`REMEMBER TO NOT CHECK IN DECRYPTED FILE ${raw}`)
 }
