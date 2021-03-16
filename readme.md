@@ -16,7 +16,7 @@ somewhere in your sever
 ```js
 process.env.NODE_ENV = "dev"
 const env = require("environment-crypt")
-env.loadJSON(`./env/${process.env.NODE_ENV}.json`, process.env.MY_SECURE_ENV_PASSWORD)
+env.loadJSON(`./env/${process.env.NODE_ENV}.json.enc`, process.env.MY_SECURE_ENV_PASSWORD)
 //process.env now has key1 set to value1
 ```
 
@@ -29,7 +29,7 @@ example decryption
 
 | option      | decryption mode                                                                                                                                                                                         | encryption mode                                                                                                     |
 |-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
-| --decrypt   | otional tells the cli to run in decryption mode                                                                                                                                                         | leave blank                                                                                                         |
+| --decrypt   | optional tells the cli to run in decryption mode                                                                                                                                                         | leave blank                                                                                                         |
 | --raw       | optional. path to output decrypted file. If the encypted file ends in `.enc` then defaults to same path with `.enc` removed, otherwise will use same path and will append `.dec` to the end of fileName | path to unecrypted env file                                                                                         |
 | --encrypted | required. path to encrypted env file                                                                                                                                                                    | optional. Path and filename you want the encrypted file to be. Defaults to unecrypted fileName with ".enc" appended |
 | --password  | required                                                                                                                                                                                                | required                                                                                                            |

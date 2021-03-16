@@ -1,6 +1,6 @@
 {
   "name": "environment-crypt",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "encrypt environment variables so that they can be checked into version control",
   "main": "index.js",
   "scripts": {
