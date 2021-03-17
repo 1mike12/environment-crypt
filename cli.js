@@ -1,12 +1,14 @@
 #! /usr/bin/env node
 
-/* Arguments that can be passed are
- */
 "use strict";
 const index = require("./index")
 const fs = require("fs")
-const argv = require('minimist')(process.argv.slice(2));
-let {decrypt, raw, encrypted, password} = argv
+const argv = require('minimist')(process.argv.slice(2))
+const path = require('path')
+
+//CLI Arguments
+//=====================================================
+let {decrypt, raw, encrypted, password, noclean} = argv
 
 if (!password) return console.warn("--password required")
 
@@ -14,19 +16,27 @@ if (!decrypt){
     if (!raw) return console.warn("--raw required")
     if (!encrypted) encrypted = raw + ".enc"
     index.encodeSync(raw, encrypted, password)
+    console.log("\x1b[32m", `Encrypted ${raw} to ${encrypted}`)
+    if (noclean){
+        return console.warn('\x1b[33m%s\x1b[0m', `REMEMBER TO NOT CHECK IN UNECRYPTED FILE: ${raw}`)
+    } else {
+        fs.unlinkSync(raw)
+    }
 } else {
+    console.log(encrypted)
     if (!encrypted) return console.warn("--encrypted required")
     if (!raw){
-        const path = require('path')
-        if (path.extname(raw) === "enc"){
+        if (path.extname(encrypted) === ".enc"){
             let parts = encrypted.split(".")
             parts.pop()
-            raw = parts.join()
+            raw = parts.join(".")
         } else {
             raw = raw + ".dec"
         }
     }
     const decoded = index.decodeSync(encrypted, password)
+    console.log(raw)
     fs.writeFileSync(raw, decoded, "utf-8")
-    return console.warn(`REMEMBER TO NOT CHECK IN DECRYPTED FILE ${raw}`)
+    console.log("\x1b[32m", `Decrypted ${encrypted} to ${raw}`)
+    return console.warn('\x1b[33m%s\x1b[0m', `REMEMBER TO NOT CHECK IN DECRYPTED FILE: ${raw}`)
 }

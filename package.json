@@ -1,10 +1,10 @@
 {
   "name": "environment-crypt",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "encrypt environment variables so that they can be checked into version control",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx mocha './{,!(node_modules)/**}/*.test.js'"
   },
   "author": "Michael Qin",
   "license": "ISC",
