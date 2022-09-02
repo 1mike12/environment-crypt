@@ -1,3 +1,6 @@
 tmp/
 node_modules/
 .idea/
+
+# generated files for test
+/test_files/test.json.enc

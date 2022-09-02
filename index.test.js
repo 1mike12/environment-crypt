@@ -1,12 +1,15 @@
 const index = require("./index")
+const fs = require("fs")
 
 describe("index", ()=> {
 
     it("should encode and decode a file", ()=> {
-        index.encodeSync("./test_files/test.json", "./tmp/test.json.enc", "mypassword")
-        let decodedJSON = index.decodeSync("./tmp/test.json.enc", "mypassword")
-        expect(require("./test_files/test.json")).to.deep.equal(JSON.parse(decodedJSON))
-
+        const source = "./test_files/test.json"
+        const encoded = "./test_files/test.json.enc"
+        index.encodeSync(source, encoded, "mypassword")
+        let decodedJSON = index.decodeSync(encoded, "mypassword")
+        expect(require(source)).to.deep.equal(JSON.parse(decodedJSON))
+        fs.unlinkSync(encoded)
     })
 
     it("should load json to environment", ()=> {
